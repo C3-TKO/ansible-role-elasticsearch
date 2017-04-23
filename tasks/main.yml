@@ -8,6 +8,9 @@
   apt:
     deb: /tmp/elasticsearch-5.3.0.deb
 
+- name: Copy Raspberry Pi JVM options configuration
+  template: src=jvm.options dest=/etc/elasticsearch/jvm.options
+
 - name: Fix /etc/elasticsearch access rights
   file:
     path: /etc/elasticsearch
@@ -20,3 +23,6 @@
     port: 9200
     rule: allow
     src: 192.168.125.0/24
+
+- name: start elasticsearch
+  service: name=elasticsearch state=started enabled=yes
