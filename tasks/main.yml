@@ -16,6 +16,8 @@
 
 - name: Fix /etc/elasticsearch access rights
   file:
+    state: directory
+    recurse: yes
     path: /etc/elasticsearch
     owner: elasticsearch
     group: elasticsearch
